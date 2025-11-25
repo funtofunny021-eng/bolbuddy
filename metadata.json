@@ -1,0 +1,7 @@
+{
+  "name": "BolBuddy",
+  "description": "A premium 2026-style language learning adventure for kids featuring Chhutku.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

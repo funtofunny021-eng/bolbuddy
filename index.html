@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>BolBuddy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              poppins: ['Poppins', 'sans-serif'],
+              nunito: ['Nunito', 'sans-serif'],
+            },
+            colors: {
+              glass: 'rgba(255, 255, 255, 0.25)',
+              'glass-border': 'rgba(255, 255, 255, 0.6)',
+              primary: '#FF6B6B',
+              secondary: '#4ECDC4',
+              accent: '#FFE66D',
+            },
+            boxShadow: {
+              'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.15)',
+              'neon': '0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.3)',
+              '3d': '0px 10px 0px 0px rgba(0,0,0,0.2)',
+              '3d-sm': '0px 4px 0px 0px rgba(0,0,0,0.2)',
+              'crystal': 'inset 0 0 20px rgba(255,255,255,0.5), 0 10px 20px rgba(0,0,0,0.1)',
+            },
+            animation: {
+              'float': 'float 6s ease-in-out infinite',
+              'float-delayed': 'float 7s ease-in-out infinite 2s',
+              'float-slow': 'float 10s ease-in-out infinite',
+              'pulse-glow': 'pulseGlow 2s infinite',
+              'slide-up': 'slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
+              'pop-in': 'popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+              'spin-slow': 'spin 8s linear infinite',
+              'liquid': 'liquid 10s linear infinite',
+              'wiggle': 'wiggle 3s ease-in-out infinite',
+              'wiggle-fast': 'wiggle 0.5s ease-in-out infinite',
+              'wave': 'wave 2s ease-in-out infinite',
+              'dance': 'dance 0.8s ease-in-out infinite',
+              'jump': 'jump 0.8s ease-in-out infinite',
+              'sparkle': 'sparkle 1s ease-out forwards',
+              'confetti': 'confetti 1s ease-out forwards',
+              'float-up': 'floatUp 2s linear infinite',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-20px)' },
+              },
+              pulseGlow: {
+                '0%, 100%': { boxShadow: '0 0 15px rgba(255,255,255,0.2)' },
+                '50%': { boxShadow: '0 0 30px rgba(255,255,255,0.6)' },
+              },
+              slideUp: {
+                '0%': { transform: 'translateY(100%)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' },
+              },
+              popIn: {
+                '0%': { transform: 'scale(0)', opacity: '0' },
+                '100%': { transform: 'scale(1)', opacity: '1' },
+              },
+              liquid: {
+                '0%': { transform: 'rotate(0deg)' },
+                '100%': { transform: 'rotate(360deg)' }
+              },
+              wiggle: {
+                '0%, 100%': { transform: 'rotate(-3deg)' },
+                '50%': { transform: 'rotate(3deg)' },
+              },
+              wave: {
+                '0%, 100%': { transform: 'rotate(0deg)' },
+                '25%': { transform: 'rotate(-10deg)' },
+                '75%': { transform: 'rotate(10deg)' },
+              },
+              dance: {
+                '0%, 100%': { transform: 'translateY(0) rotate(0deg) scale(1)' },
+                '25%': { transform: 'translateY(-20px) rotate(-10deg) scale(1.1)' },
+                '50%': { transform: 'translateY(5px) rotate(0deg) scale(0.95)' },
+                '75%': { transform: 'translateY(-10px) rotate(10deg) scale(1.05)' },
+              },
+              jump: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-50px) scale(1.1)' },
+              },
+              sparkle: {
+                '0%': { transform: 'scale(0) rotate(0deg)', opacity: '1' },
+                '100%': { transform: 'scale(1.5) rotate(180deg)', opacity: '0' },
+              },
+              confetti: {
+                '0%': { transform: 'translateY(0) rotate(0deg)', opacity: '1' },
+                '100%': { transform: 'translateY(100px) rotate(360deg)', opacity: '0' },
+              },
+              floatUp: {
+                '0%': { transform: 'translateY(0) translateX(0) rotate(0deg)', opacity: '1' },
+                '100%': { transform: 'translateY(-80px) translateX(20px) rotate(20deg)', opacity: '0' },
+              }
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        /* Sunrise Gradient: Sky Blue -> Soft Pink -> Orange -> Lime Green hint */
+        background: linear-gradient(180deg, #A1C4FD 0%, #C2E9FB 30%, #FFD1DC 60%, #FFE4B5 90%);
+        font-family: 'Nunito', sans-serif;
+        -webkit-tap-highlight-color: transparent;
+      }
+      
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+      /* Ultra Premium Glass */
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 2px solid rgba(255, 255, 255, 0.6);
+        border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1), inset 0 0 20px rgba(255, 255, 255, 0.2);
+      }
+
+      .glass-bar {
+        background: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(24px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        box-shadow: 0 -10px 40px rgba(0,0,0,0.05);
+      }
+
+      .text-shadow-sm { text-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
+      .text-shadow-lg { text-shadow: 2px 2px 4px rgba(0,0,0,0.15); }
+      
+      .perspective-container { perspective: 1000px; }
+      .preserve-3d { transform-style: preserve-3d; }
+      
+      /* Cloud Shapes */
+      .cloud {
+        background: #fff;
+        border-radius: 100px;
+        position: absolute;
+        filter: blur(8px);
+        opacity: 0.8;
+      }
+      .cloud:after, .cloud:before {
+        content: '';
+        position: absolute;
+        background: #fff;
+        z-index: -1;
+      }
+      .cloud:after { width: 40px; height: 40px; top: -20px; left: 15px; border-radius: 100px; }
+      .cloud:before { width: 50px; height: 50px; top: -30px; left: 35px; border-radius: 100px; }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "recharts": "https://aistudiocdn.com/recharts@^3.5.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
